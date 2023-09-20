@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\admin;
+namespace App\Services\admin\achat;
 
-use App\Models\Purchase;
-use App\Models\PurchaseItem;
+use App\Models\achat\Purchase;
+use App\Models\achat\PurchaseItem;
 use Illuminate\Support\Facades\DB;
 
 class PurchaseAdminService
@@ -28,24 +28,25 @@ class PurchaseAdminService
         });
     }
 
+    public function deleteById($purchaseId)
+    {
+        return DB::transaction(function () use ($purchaseId) {
+            $purchase = Purchase::findOrFail($purchaseId);
 
+            $purchase->purchaseItems()->delete();
+
+            $purchase->delete();
+
+            return true;
+        });
+    }
 
     public function findAll()
     {
         return Purchase::all();
     }
 
-    public function deleteById($productId): bool
-    {
-        $product = Purchase::find($productId);
 
-        if (!$product) {
-            return false;
-        }
-
-        $product->delete();
-        return true;
-    }
 
 
 

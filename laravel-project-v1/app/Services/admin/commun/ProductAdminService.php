@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\admin;
+namespace App\Services\admin\commun;
 
-use App\Models\Product;
+use App\Models\commun\Product;
 
 class ProductAdminService
 {

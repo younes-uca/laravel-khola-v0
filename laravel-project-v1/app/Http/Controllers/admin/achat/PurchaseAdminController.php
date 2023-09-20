@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin\achat;
 
-use App\Services\admin\PurchaseAdminService;
+use App\Http\Controllers\Controller;
+use App\Services\admin\achat\PurchaseAdminService;
 use Illuminate\Http\Request;
 
-class PurchaseController extends Controller
+class PurchaseAdminController extends Controller
 {
 
     private PurchaseAdminService $service;
@@ -34,4 +35,20 @@ class PurchaseController extends Controller
         return $this->service->save($validatedPurchaseData, $validatedPurchaseItemsData['purchaseItems']);
 
     }
+
+
+    public function deleteById($id)
+    {
+        return $this->service->deleteById($id);
+
+    }
+
+
+    public function findAll()
+    {
+        $items = $this->service->findAll();
+
+        return  $items;
+    }
+
 }

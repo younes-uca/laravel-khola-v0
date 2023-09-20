@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\admin;
+namespace App\Services\admin\commun;
 
-use App\Models\Client;
+use App\Models\commun\Client;
 
 class ClientAdminService
 {

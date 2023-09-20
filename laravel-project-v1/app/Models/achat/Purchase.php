@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\achat;
 
+use App\Models\commun\Client;
 use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model

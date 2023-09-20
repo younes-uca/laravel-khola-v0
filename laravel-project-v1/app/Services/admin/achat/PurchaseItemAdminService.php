@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\admin;
+namespace App\Services\admin\achat;
 
-use App\Models\PurchaseItem;
+use App\Models\achat\PurchaseItem;
 
 class PurchaseItemAdminService
 {

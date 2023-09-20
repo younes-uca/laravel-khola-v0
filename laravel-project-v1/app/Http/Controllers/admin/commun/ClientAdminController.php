@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin\commun;
 
-use App\Services\admin\ClientAdminService;
-use App\Models\Client;
+use App\Http\Controllers\Controller;
+use App\Models\commun\Client;
+use App\Services\admin\commun\ClientAdminService;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class ClientAdminController extends Controller
 {
     private ClientAdminService $service;
 

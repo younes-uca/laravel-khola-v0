@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin\achat;
 
-use App\Models\PurchaseItem;
-use App\Services\admin\PurchaseItemAdminService;
+use App\Http\Controllers\Controller;
+use App\Models\achat\PurchaseItem;
+use App\Services\admin\achat\PurchaseItemAdminService;
 use Illuminate\Http\Request;
 
-class PurchaseItemController extends Controller
+class PurchaseItemAdminController extends Controller
 {
     private PurchaseItemAdminService $service;
 

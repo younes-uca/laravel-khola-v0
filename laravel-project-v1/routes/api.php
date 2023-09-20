@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\admin\achat\PurchaseAdminController;
+use App\Http\Controllers\admin\commun\ClientAdminController;
+use App\Http\Controllers\admin\commun\ProductAdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,21 +21,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/product/', [ProductController::class, 'findAll']);
-Route::post('/product/', [ProductController::class, 'save']);
-Route::delete('/product/{id}', [ProductController::class, 'deleteById']);
+Route::get('/product/', [ProductAdminController::class, 'findAll']);
+Route::post('/product/', [ProductAdminController::class, 'save']);
+Route::delete('/product/{id}', [ProductAdminController::class, 'deleteById']);
 
-Route::get('/client/', [ClientController::class, 'findAll']);
-Route::post('/client/', [ClientController::class, 'save']);
-Route::delete('/client/{id}', [ClientController::class, 'deleteById']);
-
-
-Route::get('/purchase/', [PurchaseController::class, 'findAll']);
-Route::post('/purchase/', [PurchaseController::class, 'save']);
-Route::delete('/purchase/{id}', [PurchaseController::class, 'deleteById']);
+Route::get('/client/', [ClientAdminController::class, 'findAll']);
+Route::post('/client/', [ClientAdminController::class, 'save']);
+Route::delete('/client/{id}', [ClientAdminController::class, 'deleteById']);
 
 
+Route::get('/purchase/', [PurchaseAdminController::class, 'findAll']);
+Route::post('/purchase/', [PurchaseAdminController::class, 'save']);
+Route::delete('/purchase/{id}', [PurchaseAdminController::class, 'deleteById']);
 
-Route::get('/product/{id}', [ProductController::class, 'show']);
-Route::put('/product/{id}', [ProductController::class, 'update']);
+
+
+
 

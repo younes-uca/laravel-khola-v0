@@ -1,13 +1,14 @@
 <?php
 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin\commun;
 
-use App\Models\Product;
-use App\Services\admin\ProductAdminService;
+use App\Http\Controllers\Controller;
+use App\Models\commun\Product;
+use App\Services\admin\commun\ProductAdminService;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductAdminController extends Controller
 {
     private ProductAdminService $service;
 

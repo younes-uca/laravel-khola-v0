@@ -3,6 +3,8 @@
 namespace App\Services\admin;
 
 use App\Models\Purchase;
+use App\Models\PurchaseItem;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseAdminService
 {

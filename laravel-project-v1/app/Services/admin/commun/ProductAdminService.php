@@ -3,31 +3,34 @@
 namespace App\Services\admin\commun;
 
 use App\Models\commun\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductAdminService
 {
-
-    public function save(Product $item): Product
+    public function save($item)
     {
-        $item->save();
-        return $item;
+        return DB::transaction(function () use ($item) {
+            $savedItem = new Product($item);
+
+            $savedItem->save();
+
+            return $savedItem;
+        });
     }
+
 
     public function findAll()
     {
         return Product::all();
     }
 
-    public function deleteById($productId): bool
+    public function deleteById($id): bool
     {
-        $product = Product::find($productId);
-
-        if (!$product) {
-            return false;
-        }
-
-        $product->delete();
-        return true;
+        return DB::transaction(function () use ($id) {
+            $item = Product::findOrFail($id);
+            $item->delete();
+            return true;
+        });
     }
 
 

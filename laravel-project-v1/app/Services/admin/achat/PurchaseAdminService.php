@@ -9,33 +9,33 @@ use Illuminate\Support\Facades\DB;
 class PurchaseAdminService
 {
 
-    public function save($purchaseData, $purchaseItemsData)
+    public function save($item, $purchaseItems)
     {
-        return DB::transaction(function () use ($purchaseData, $purchaseItemsData) {
-            $purchase = new Purchase($purchaseData);
+        return DB::transaction(function () use ($item, $purchaseItems) {
+            $savedItem = new Purchase($item);
 
-            $purchase->save();
+            $savedItem->save();
 
-            $purchaseItems = [];
-            foreach ($purchaseItemsData as $itemData) {
-                $purchaseItem = new PurchaseItem($itemData);
-                $purchaseItems[] = $purchaseItem;
+            $savedPurchaseItems = [];
+            foreach ($purchaseItems as $element) {
+                $purchaseItem = new PurchaseItem($element);
+                $savedPurchaseItems[] = $purchaseItem;
             }
 
-            $purchase->purchaseItems()->saveMany($purchaseItems);
+            $savedItem->purchaseItems()->saveMany($savedPurchaseItems);
 
-            return $purchase;
+            return $savedItem;
         });
     }
 
-    public function deleteById($purchaseId)
+    public function deleteById($id)
     {
-        return DB::transaction(function () use ($purchaseId) {
-            $purchase = Purchase::findOrFail($purchaseId);
+        return DB::transaction(function () use ($id) {
+            $item = Purchase::findOrFail($id);
 
-            $purchase->purchaseItems()->delete();
+            $item->purchaseItems()->delete();
 
-            $purchase->delete();
+            $item->delete();
 
             return true;
         });

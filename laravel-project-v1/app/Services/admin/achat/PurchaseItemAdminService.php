@@ -3,6 +3,7 @@
 namespace App\Services\admin\achat;
 
 use App\Models\achat\PurchaseItem;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseItemAdminService
 {
@@ -22,19 +23,15 @@ class PurchaseItemAdminService
         return PurchaseItem::all();
     }
 
-    public function deleteById($purchaseItemId): bool
+
+    public function deleteById($id): bool
     {
-        $purchaseItem = PurchaseItem::find($purchaseItemId);
-
-        if (!$purchaseItem) {
-            return false;
-        }
-
-        $purchaseItem->delete();
-        return true;
+        return DB::transaction(function () use ($id) {
+            $item = PurchaseItem::findOrFail($id);
+            $item->delete();
+            return true;
+        });
     }
-
-
 
 
 

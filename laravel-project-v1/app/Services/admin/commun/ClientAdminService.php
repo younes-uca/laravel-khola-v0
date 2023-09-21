@@ -3,14 +3,21 @@
 namespace App\Services\admin\commun;
 
 use App\Models\commun\Client;
+use Illuminate\Support\Facades\DB;
 
 class ClientAdminService
 {
 
-    public function save(Client $item): Client
+
+    public function save($item)
     {
-        $item->save();
-        return $item;
+        return DB::transaction(function () use ($item) {
+            $savedItem = new Client($item);
+
+            $savedItem->save();
+
+            return $savedItem;
+        });
     }
 
 
@@ -20,16 +27,13 @@ class ClientAdminService
         return Client::all();
     }
 
-    public function deleteById($clientId): bool
+    public function deleteById($id): bool
     {
-        $client = Client::find($clientId);
-
-        if (!$client) {
-            return false;
-        }
-
-        $client->delete();
-        return true;
+        return DB::transaction(function () use ($id) {
+            $item = Client::findOrFail($id);
+            $item->delete();
+            return true;
+        });
     }
 
 

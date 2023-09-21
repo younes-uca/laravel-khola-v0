@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="MavenCustomPomFilePath">
+    <option name="mavenPomFileUrl" value="file://$MODULE_DIR$/default/pom.xml.ftl" />
+  </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="eda7b544-de90-45b8-b6be-e119d2170999" />
+  </component>
+</module>

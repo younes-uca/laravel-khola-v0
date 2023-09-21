@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\admin\achat\PurchaseAdminService;
 use Illuminate\Http\Request;
 
-class PurchaseAdminController extends Controller
+class PurchaseRestAdmin extends Controller
 {
 
     private PurchaseAdminService $service;
@@ -18,21 +18,21 @@ class PurchaseAdminController extends Controller
 
     public function save(Request $request)
     {
-        $validatedPurchaseData = $request->validate([
-            'reference' => 'required|string|max:255',
+        $validated = $request->validate([
+            'reference' => 'required|string',
             'purchaseDate' => 'required|date',
             'total' => 'required|numeric',
             'description' => 'nullable|string',
             'client_id' => 'required|exists:client,id',
         ]);
 
-        $validatedPurchaseItemsData = $request->validate([
+        $validatedPurchaseItems = $request->validate([
             'purchaseItems.*.product_id' => 'required|exists:product,id',
             'purchaseItems.*.price' => 'required|numeric',
             'purchaseItems.*.quantity' => 'required|numeric',
         ]);
 
-        return $this->service->save($validatedPurchaseData, $validatedPurchaseItemsData['purchaseItems']);
+        return $this->service->save($validated, $validatedPurchaseItems['purchaseItems']);
 
     }
 

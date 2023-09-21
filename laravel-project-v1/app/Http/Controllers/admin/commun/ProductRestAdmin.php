@@ -1,33 +1,30 @@
 <?php
 
+
 namespace App\Http\Controllers\admin\commun;
 
 use App\Http\Controllers\Controller;
-use App\Models\commun\Client;
-use App\Services\admin\commun\ClientAdminService;
+use App\Models\commun\Product;
+use App\Services\admin\commun\ProductAdminService;
 use Illuminate\Http\Request;
 
-class ClientAdminController extends Controller
+class ProductRestAdmin extends Controller
 {
-    private ClientAdminService $service;
+    private ProductAdminService $service;
 
-    public function __construct(ClientAdminService $service)
+    public function __construct(ProductAdminService $service)
     {
         $this->service = $service;
     }
 
-    public function save(Request $request): Client
+    public function save(Request $request): Product
     {
         $validated = $request->validate([
-            'fullName' => 'required|string',
-            'email' => 'required|string',
+            'reference' => 'required|string',
+            'label' => 'required|string',
         ]);
 
-        $client = new Client();
-        $client->fullName = $validated['fullName'];
-        $client->email = $validated['email'];
-
-        return  $this->service->save($client);
+        return  $this->service->save($validated);
     }
 
     public function findAll()
@@ -48,5 +45,7 @@ class ClientAdminController extends Controller
 
         return $result;
     }
+
+
 
 }

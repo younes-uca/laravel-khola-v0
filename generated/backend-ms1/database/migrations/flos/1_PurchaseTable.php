@@ -23,6 +23,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('client');
+            $table->timestamps();
         });
     }
 

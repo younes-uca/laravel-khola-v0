@@ -38,6 +38,7 @@ return new class extends Migration
             $table->foreign('${fieldGeneric.name?uncap_first}_id')->references('id')->on('${fieldGeneric.typeAsPojo.formatedDataBase}');
     </#if>
 </#list>
+            $table->timestamps();
         });
     }
 

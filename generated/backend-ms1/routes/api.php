@@ -29,15 +29,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/purchaseItem/', [PurchaseItemRestAdmin::class, 'findAll']);
 Route::post('/purchaseItem/', [PurchaseItemRestAdmin::class, 'save']);
 Route::delete('/purchaseItem/{id}', [PurchaseItemRestAdmin::class, 'deleteById']);
+
 Route::get('/purchase/', [PurchaseRestAdmin::class, 'findAll']);
 Route::post('/purchase/', [PurchaseRestAdmin::class, 'save']);
 Route::delete('/purchase/{id}', [PurchaseRestAdmin::class, 'deleteById']);
+
 Route::get('/product/', [ProductRestAdmin::class, 'findAll']);
 Route::post('/product/', [ProductRestAdmin::class, 'save']);
 Route::delete('/product/{id}', [ProductRestAdmin::class, 'deleteById']);
+
 Route::get('/client/', [ClientRestAdmin::class, 'findAll']);
 Route::post('/client/', [ClientRestAdmin::class, 'save']);
 Route::delete('/client/{id}', [ClientRestAdmin::class, 'deleteById']);
+
 Route::get('/clientCategory/', [ClientCategoryRestAdmin::class, 'findAll']);
 Route::post('/clientCategory/', [ClientCategoryRestAdmin::class, 'save']);
 Route::delete('/clientCategory/{id}', [ClientCategoryRestAdmin::class, 'deleteById']);

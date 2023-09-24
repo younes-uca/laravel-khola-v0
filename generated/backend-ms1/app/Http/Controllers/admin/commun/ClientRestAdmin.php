@@ -22,7 +22,7 @@ class ClientRestAdmin  extends Controller
 
             'fullName' => 'required|string',
 
-            'clientCategory_id' => 'required|exists:client-category,id',
+            'clientCategory_id' => 'required|exists:client_category,id',
         ]);
 
 

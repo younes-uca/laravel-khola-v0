@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('reference')->required();
             $table->string('code')->required();
+            $table->timestamps();
 
         });
     }

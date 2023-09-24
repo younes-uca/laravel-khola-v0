@@ -4,8 +4,8 @@ namespace App\Services\admin\flos;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\flos\Purchase;
-use App\Models\commun\Product;
 use App\Models\commun\Client;
+use App\Models\commun\Product;
 
 class PurchaseAdminService
 {

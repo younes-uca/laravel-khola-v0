@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models<#if pojo.subModule.folder??>\${pojo.subModule.folder}</#if>\${pojo.name};
 <#if pojo.dependencies??>
     <#list pojo.dependencies as dependency>
-        <#if dependency?? && dependency.name?? && dependency.subModule.folder != pojo.subModule.folder>
+        <#if dependency?? && dependency.name??>
 use App\Models<#if dependency.subModule.folder??>\${dependency.subModule.folder}</#if>\${dependency.name};
         </#if>
     </#list>

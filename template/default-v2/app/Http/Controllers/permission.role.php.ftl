@@ -41,7 +41,7 @@ class ${permissions[0].pojo.name?cap_first}Rest${roleName?cap_first}  extends Co
 
 <#list permissions[0].pojo.fieldsGeneric as fieldGeneric>
     <#if fieldGeneric.pojo??>
-            '${fieldGeneric.name?uncap_first}_id' => 'required|exists:${fieldGeneric.formatedUrl},id',
+            '${fieldGeneric.name?uncap_first}_id' => 'required|exists:${fieldGeneric.typeAsPojo.formatedDataBase},id',
     </#if>
 </#list>
         ]);

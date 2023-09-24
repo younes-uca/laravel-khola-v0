@@ -2,6 +2,7 @@
 
 namespace App\Services\admin\flos;
 
+use App\Models\flos\PurchaseItem;
 use Illuminate\Support\Facades\DB;
 use App\Models\flos\Purchase;
 use App\Models\commun\Product;
